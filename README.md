@@ -1,16 +1,74 @@
-# Workflows
+# BWA
 
-AFCL Workflows from various domains
+BWA is a common life sciences task of performing DNA read alignment.
 
-### Summary
+#### Get the code
 
-name | description |  draft | functions | orchestration | datasets |validity checks | metrics 
---- | ---- | ----- | ----- | ---- | ---- | ---- | -----
-[`BWA`](https://github.com/ApolloCEC/workflows/tree/master/BWA)  | BWA is a common life sciences task of performing DNA read alignment | ✅ | ✅ | ✅ | Escherichia coli, Trypanosoma brucei |  | 
-[`SENTIM`](https://github.com/ApolloCEC/workflows/tree/master/SENTIM)  | SENTIM uses a pre-trained Tensorflow model to infer sentiment of millions of Tweets | ✅ | ✅  |  |  |  | 
+```
+git clone https://github.com/ApolloCEC/workflows
+cd workflows/BWA
+```
 
-### Pool
+#### Get an input dataset
 
-name | description | notes | expected t
----- | ---- | ---- | -----
-Seismic | Seismic signal-processing | Jakob: From `https://github.com/rosafilgueira/dispel4py_workflows`. Fairly convoluted. | 1.5 weeks
+Name | Description |  Number of reads | Bucket | Keys
+---|----|-----|----|----
+Escherichia Coli | A gram-negative bacterium that can cause food poisoning. The Assembly used is ASM584v2, with a double mutation in gene `hipA`. | | `jak-bwa-bucket` | `input/NC_000913.3-hipA7.fasta`<br>`input/reads/hipa7_reads_R1.fastq`<br>`input/reads/hipa7_reads_R2.fastq` 
+Trypanosoma brucei | A single-cell organism that causes sleeping sickness in humans. The Assembly used is ASM244v1. | | `jak-bwa-bucket` | `t-brucei/ASM244v1.fasta`<br>`t-brucei/reads/asm_reads_R1.fastq`<br>`t-brucei/reads/asm_reads_R2.fastq`
+Rhizobium jaguaris | A nitrogen-fixing soil bacterium isolated in Mexico. The Assembly used is ASM362775v1.  | | `jak-bwa-bucket` | `rhi-jaguaris/rhizobium-jaguaris.fasta`<br>`rhi-jaguaris/rhi_jaguaris_reads_R1.fastq`<br>`rhi-jaguaris/rhi_jaguaris_reads_R2.fastq`
+Bacteroides thetaiotaomicron | An anaerobic bacterium very common in the gut of humans and other mammals. The Assembly used is ASM1413175v1. | | `jak-bwa-bucket` | `bac-thet/bac_thetaiotamicron.fasta`<br>`bac-thet/bac_thetaiotamicron_reads_R1.fastq`<br>`bac-thet/bac_thetaiotamicron_reads_R2.fastq`
+
+
+Put any three files in a S3 bucket of yours, ideally in the same region as the Lambdas will be in.
+Update `input.json` with the bucket and the keys of your DNA samples, and the desired parallelism:
+
+```
+{
+  "s3bucket": "YOUR_BUCKET",
+  "files": {
+    "reference": "YOUR_KEY_OF_REFERENCE_GENOME.fasta",
+    "r1": "YOUR_KEY_OF_reads_R1.fastq",
+    "r2": "YOUR_KEY_OF_reads_R2.fastq"
+  },
+  "numSplits": 3
+}
+```
+
+
+#### Deploy the Lambdas
+
+The Lambdas are in `functions`.
+You can run [`npx deply`](https://www.npmjs.com/package/deply) if you don't want to deploy them by hand. Just update `deploy.json` beforehand. 
+Alternatively, deploy them by hand to Amazon.
+
+#### Run the workflow
+
+
+```
+
+  TODO: Instructions / script on how to update ARNs in workflow.yaml after deployment
+
+
+```
+
+```
+$ cd BWA
+$ java -jar YOUR_PATH_TO_xAFCL.jar ./workflow.yaml ./input.json
+```
+#### Preliminary Metrics
+
+Measurements were not done in a controlled test environment.
+Use for personal reference only.
+
+
+![Chart showing metrics of Rhizobium jaguaris](https://github.com/Apollo-workflows/BWA/blob/master/metrics/rhizobium-jaguaris-metrics.png)
+
+
+#### References
+
+**BWA**: [Li H. and Durbin R. (2010) Fast and accurate long-read alignment with Burrows-Wheeler Transform. Bioinformatics, Epub. [PMID: 20080505]](https://academic.oup.com/bioinformatics/article/26/5/589/211735)
+
+**Seqkit**: [W Shen, S Le, Y Li*, F Hu*. SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation. PLOS ONE. doi:10.1371/journal.pone.0163962.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163962)
+
+**Assemblies**: [National Center for Biotechnology Information](https://www.ncbi.nlm.nih.gov/). Please consult the table above for the exact assemblies used.
+

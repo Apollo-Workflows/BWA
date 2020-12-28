@@ -1,0 +1,16 @@
+[
+  {
+    "forEachIn": "./functions",
+    "do": "cp ../../utils.js .; zip -r deploymentpackage.zip .",
+    "upload": "./deploymentpackage.zip",
+    "config": {
+      "amazon": {
+        "role": "YOUR_LAMBDA_ROLE_ARN",
+        "timeout": 240,
+        "region": "eu-central-1",
+        "ram": 4096
+      }
+    }
+  }
+
+]
