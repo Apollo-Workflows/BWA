@@ -11,12 +11,12 @@ cd workflows/BWA
 
 #### Get an input dataset
 
-Name | Description |  Number of reads | Bucket | Keys
----|----|-----|----|----
-Escherichia Coli | A gram-negative bacterium that can cause food poisoning. The Assembly used is ASM584v2, with a double mutation in gene `hipA`. | | `jak-bwa-bucket` | `input/NC_000913.3-hipA7.fasta`<br>`input/reads/hipa7_reads_R1.fastq`<br>`input/reads/hipa7_reads_R2.fastq` 
-Trypanosoma brucei | A single-cell organism that causes sleeping sickness in humans. The Assembly used is ASM244v1. | | `jak-bwa-bucket` | `t-brucei/ASM244v1.fasta`<br>`t-brucei/reads/asm_reads_R1.fastq`<br>`t-brucei/reads/asm_reads_R2.fastq`
-Rhizobium jaguaris | A nitrogen-fixing soil bacterium isolated in Mexico. The Assembly used is ASM362775v1.  | | `jak-bwa-bucket` | `rhi-jaguaris/rhizobium-jaguaris.fasta`<br>`rhi-jaguaris/rhi_jaguaris_reads_R1.fastq`<br>`rhi-jaguaris/rhi_jaguaris_reads_R2.fastq`
-Bacteroides thetaiotaomicron | An anaerobic bacterium very common in the gut of humans and other mammals. The Assembly used is ASM1413175v1. | | `jak-bwa-bucket` | `bac-thet/bac_thetaiotamicron.fasta`<br>`bac-thet/bac_thetaiotamicron_reads_R1.fastq`<br>`bac-thet/bac_thetaiotamicron_reads_R2.fastq`
+Name | Description  | Bucket | Keys
+---|----|-----|----
+Escherichia Coli | A gram-negative bacterium that can cause food poisoning. The Assembly used is ASM584v2, with a double mutation in gene `hipA`. |  `jak-bwa-bucket` | `input/NC_000913.3-hipA7.fasta`<br>`input/reads/hipa7_reads_R1.fastq`<br>`input/reads/hipa7_reads_R2.fastq` 
+Trypanosoma brucei | A single-cell organism that causes sleeping sickness in humans. The Assembly used is ASM244v1. |  `jak-bwa-bucket` | `t-brucei/ASM244v1.fasta`<br>`t-brucei/reads/asm_reads_R1.fastq`<br>`t-brucei/reads/asm_reads_R2.fastq`
+Rhizobium jaguaris | A nitrogen-fixing soil bacterium isolated in Mexico. The Assembly used is ASM362775v1.  |  `jak-bwa-bucket` | `rhi-jaguaris/rhizobium-jaguaris.fasta`<br>`rhi-jaguaris/rhi_jaguaris_reads_R1.fastq`<br>`rhi-jaguaris/rhi_jaguaris_reads_R2.fastq`
+Bacteroides thetaiotaomicron | An anaerobic bacterium very common in the gut of humans and other mammals. The Assembly used is ASM1413175v1. |  `jak-bwa-bucket` | `bac-thet/bac_thetaiotamicron.fasta`<br>`bac-thet/bac_thetaiotamicron_reads_R1.fastq`<br>`bac-thet/bac_thetaiotamicron_reads_R2.fastq`
 
 
 Put any three files in a S3 bucket of yours, ideally in the same region as the Lambdas will be in.
