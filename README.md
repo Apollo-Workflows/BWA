@@ -2,6 +2,9 @@
 
 BWA is a common life sciences task of performing DNA read alignment.
 
+![workflow-slim diagram](./diagrams/workflow-slim.svg)
+
+
 #### Get the code
 
 ```
