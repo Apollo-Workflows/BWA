@@ -16,6 +16,9 @@ dataIns:
 - name: "numSplits"
   type: "number"
   source: "numSplits"
+- name: "s3mainprefix"
+  type: "string"
+  source: "s3mainprefix"
 workflowBody:
 - function:
     name: "bwa-split"
@@ -34,8 +37,6 @@ workflowBody:
       type: "string"
       source: "BWA/file_r2"
     dataOuts:
-    - name: "s3mainprefix"
-      type: "string"
     - name: "s3prefixes"
       type: "collection"
     - name: "r1s3keys"
@@ -54,7 +55,7 @@ workflowBody:
       source: "BWA/s3bucket"
     - name: "s3mainprefix"
       type: "string"
-      source: "bwa-split/s3mainprefix"
+      source: "BWA/s3mainprefix"
     - name: "file_reference"
       type: "string"
       source: "BWA/file_reference"
@@ -131,7 +132,7 @@ workflowBody:
         value: "BLOCK(1)"
     - name: "s3mainprefix"
       type: "string"
-      source: "bwa-split/s3mainprefix"
+      source: "BWA/s3mainprefix"
     loopCounter:
       type: "number"
       to: "BWA/numSplits"
