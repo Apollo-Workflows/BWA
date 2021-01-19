@@ -1,0 +1,8 @@
+{
+  "s3bucket": "YOUR_BUCKET",
+  "file_reference": "YOUR_KEY_OF_REFERENCE_GENOME.fasta",
+  "file_r1": "YOUR_KEY_OF_reads_R1.fastq",
+  "file_r2": "YOUR_KEY_OF_reads_R2.fastq",
+  "numSplits": 3,
+  "s3mainprefix": "SOME_UNIQUE_S3_WORKING_DIRECTORY/"
+}
