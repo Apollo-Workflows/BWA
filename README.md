@@ -2,7 +2,16 @@
 
 BWA is a common life sciences task of performing DNA read alignment.
 
+#### Overview
+
+This repository contains a parallel implementation of BWA, orchestrated with the Abstract Function Choreography Language and runnable on the [xAFCL Enactment Engine](https://github.com/sashkoristov/enactmentengine)
+
+There are two workflows flavors, `workflow*` and `workflow-slim*`:
+* `workflows*` are runnable, and well-tested on the current version of xAFCL.
+* `workflows-slim*` are aspirational workflows where the dataflow is optimized to its theoretical limit, but are not tested on the current version of xAFCL.
+
 ![workflow-slim diagram](./diagrams/workflow-slim.svg)
+
 
 
 #### Get the code
