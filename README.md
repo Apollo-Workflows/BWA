@@ -41,7 +41,7 @@ Update `input.json` with the bucket and the keys of your DNA samples, and the de
 #### Deploy the Lambdas
 
 The Lambdas are in `functions`.
-You can run [`npx deply`](https://www.npmjs.com/package/deply) if you don't want to deploy them by hand. Just update `deploy.json` beforehand. 
+You can run `npx deply` if you don't want to deploy them by hand. Just update `deploy.json` beforehand. 
 Alternatively, deploy them by hand to Amazon.
 
 #### Run the workflow
