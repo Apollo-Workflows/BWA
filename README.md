@@ -19,8 +19,8 @@ There are two workflows flavors, `workflow*` and `workflow-slim*`:
 #### Get the code
 
 ```
-git clone https://github.com/ApolloCEC/workflows
-cd workflows/BWA
+git clone https://github.com/Apollo-Workflows/BWA
+cd BWA
 ```
 
 #### Get an input dataset
@@ -57,18 +57,21 @@ Alternatively, deploy them by hand to Amazon.
 
 #### Run the workflow
 
+Open `workflow.yaml`, and update the `resource` fields to the ARNs of your deployed Lambdas:
 
+```yaml
+ ...
+ properties:
+    - name: "resource"
+      value: "arn:aws:lambda:XXXXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 
-  TODO: Instructions / script on how to update ARNs in workflow.yaml after deployment
-
-
-```
+Then, you can run the workflow:
 
 ```
-$ cd BWA
 $ java -jar YOUR_PATH_TO_xAFCL.jar ./workflow.yaml ./input.json
 ```
+
 #### Preliminary Metrics
 
 Measurements were not done in a controlled test environment.
