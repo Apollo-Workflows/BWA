@@ -6,9 +6,9 @@ BWA is a common life sciences task of performing DNA read alignment.
 
 This repository contains a parallel implementation of BWA, orchestrated with the Abstract Function Choreography Language and runnable on the [xAFCL Enactment Engine](https://github.com/sashkoristov/enactmentengine)
 
-There are two workflows flavors, `workflow*` and `workflow-slim*`:
-* `workflows*` are runnable, and well-tested on the current version of xAFCL.
-* `workflows-slim*` are aspirational workflows where the dataflow is optimized to its theoretical limit, but are not tested on the current version of xAFCL.
+There are two workflows flavors, `workflow*` and `workflow-slim`:
+* `workflows` are runnable, and well-tested on the current version of xAFCL.
+* `workflows-slim` are aspirational workflows where the dataflow is optimized to its theoretical limit, but are not tested on the current version of xAFCL.
 
 
 ![workflow-slim diagram](./diagrams/workflow-slim.svg)
@@ -57,13 +57,15 @@ Alternatively, deploy them by hand to Amazon.
 
 #### Run the workflow
 
-Open `workflow.yaml`, and update the `resource` fields to the ARNs of your deployed Lambdas:
+
+Open `workflow.yaml`, and update the `resource` fields to the ARNs of your deployed Lambdas. You can find the ARNs in your [AWS Lambda Console](http://console.aws.amazon.com/lambda).
 
 ```yaml
  ...
  properties:
     - name: "resource"
-      value: "arn:aws:lambda:XXXXXXXXXXXXXXXXXXXXXXXXXX"
+      value: "arn:aws:lambda:XXXXXXXXXXXXXXXXXXXXXX:bwa-index"
+ ...
 ```
 
 Then, you can run the workflow:
